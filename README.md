@@ -6,7 +6,7 @@ bash ./init.sh
 ```
 
 
-## Start sasl_ssl kafka zookeep standalone
+## Start sasl_ssl kafka zookeeper standalone
 
 ```$
 ./scripts/run.sh
