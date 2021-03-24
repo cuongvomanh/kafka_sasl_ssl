@@ -24,3 +24,17 @@ Copy cert,key store, trust store file to sasl_ssl_config/ssl/ and run
 ```
 is_create_cert=false ./scripts/run.sh
 ```
+
+## Start sasl_ssl with docker-compose
+
+### Build image
+```
+docker build . -t kafka_sasl_ssl:0.1
+```
+
+### Copy cert,key store, trust store file to sasl_ssl_config/ssl/ and run
+
+### Run
+```
+docker-compose up -d
+```
