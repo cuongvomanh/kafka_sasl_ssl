@@ -1,0 +1,8 @@
+./sasl_ssl_config/ssl/ca-cert
+./sasl_ssl_config/ssl/ca-cert.srl
+./sasl_ssl_config/ssl/ca-key
+./sasl_ssl_config/ssl/cert-file
+./sasl_ssl_config/ssl/cert-signed
+./sasl_ssl_config/ssl/kafka.client.truststore.jks
+./sasl_ssl_config/ssl/kafka.server.keystore.jks
+./sasl_ssl_config/ssl/kafka.server.truststore.jks

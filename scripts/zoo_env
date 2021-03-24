@@ -1,0 +1,1 @@
+export KAFKA_OPTS="-Djava.security.auth.login.config="$(pwd)"/sasl_ssl_config/zookeeper_jaas.conf"
