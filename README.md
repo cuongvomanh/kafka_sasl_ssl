@@ -22,5 +22,5 @@ is_ssl=false ./scripts/run.sh
 Copy cert,key store, trust store file to sasl_ssl_config/ssl/ and run
 
 ```
-is_ssl=false ./scripts/run.sh
+is_create_cert=false ./scripts/run.sh
 ```
