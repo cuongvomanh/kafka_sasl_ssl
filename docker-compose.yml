@@ -12,9 +12,10 @@ services:
       #GOPATH: /root/gocode
       #PATH: $PATH:/root/go/bin
     volumes: 
-      - ./sasl_ssl_config:/kafka_sasl_ssl/sasl_ssl_config
-      - ./samples:/kafka_sasl_ssl/samples
-      - ./scripts:/kafka_sasl_ssl/scripts
+      #- ./sasl_ssl_config:/kafka_sasl_ssl/sasl_ssl_config
+      - ./sasl_ssl_config/ssl:/kafka_sasl_ssl/sasl_ssl_config/ssl
+      #- ./samples:/kafka_sasl_ssl/samples
+      #- ./scripts:/kafka_sasl_ssl/scripts
       #- /tmp/kafka-logs:/tmp/kafka-logs
     entrypoint: 
       - /bin/sh 
