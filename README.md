@@ -1,5 +1,12 @@
 # kafka_sasl_ssl
-To start sasl_ssl kafka zookeep standalone
+## Download kafka and extract
+
+```
+bash ./init.sh
+```
+
+
+## Start sasl_ssl kafka zookeep standalone
 
 ```$
 ./scripts/run.sh
