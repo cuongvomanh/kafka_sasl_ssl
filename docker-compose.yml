@@ -1,0 +1,36 @@
+---
+version: '3'
+services:
+  kafka1:
+    image: kafka_sasl_ssl:0.1
+    container_name: kafka1
+    ports:
+      - 9092:9092
+      - 9093:9093
+      - 9094:9094
+    #environment:
+      #GOPATH: /root/gocode
+      #PATH: $PATH:/root/go/bin
+    volumes: 
+      - ./sasl_ssl_config:/kafka_sasl_ssl/sasl_ssl_config
+      - ./samples:/kafka_sasl_ssl/samples
+      - ./scripts:/kafka_sasl_ssl/scripts
+      #- /tmp/kafka-logs:/tmp/kafka-logs
+    entrypoint: 
+      - /bin/sh 
+      - -c 
+      - |
+        cd kafka_sasl_ssl && is_create_cert=false ./scripts/run.sh
+  #kafka2:
+    #image: kafka_sasl_ssl:0.1
+    #container_name: kafka2
+    #privileged: true
+    #volumes: 
+      #- ./sasl_ssl_config:/kafka_sasl_ssl/sasl_ssl_config
+      #- ./samples:/kafka_sasl_ssl/samples
+      #- ./scripts:/kafka_sasl_ssl/scripts
+    #entrypoint: 
+      #- /bin/sh 
+      #- -c 
+      #- |
+        #cd kafka_sasl_ssl && ./scripts/run.sh

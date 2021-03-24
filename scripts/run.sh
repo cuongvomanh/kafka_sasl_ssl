@@ -7,7 +7,7 @@ else
     echo "Using SASL SSL for kafka"
 fi
 
-if [ "$is_ssl" = "true" && "$is_create_cert" = "true" ] ;then
+if [ "$is_ssl" = "true" ] && [ "$is_create_cert" = "true" ] ;then
     echo "Init cert!"
     echo "___________"
     [ ! -d "sasl_ssl_config/ssl" ] && mkdir sasl_ssl_config/ssl
@@ -24,10 +24,15 @@ else
 fi
 echo "Config pwd!"
 echo "___________"
-sed -i "s#/home/cuong/Staff/github/kafka_repo/sasl/new1/kafka_2.12-2.7.0#PWDODAY#g" sasl_ssl_config/server.properties
+sed -i "s#/home/cuong/Staff/github/kafka_repo/sasl/new1/kafka_sasl_ssl#PWDODAY#g" sasl_ssl_config/server.properties
+sed -i "s#/kafka_sasl_ssl#PWDODAY#g" sasl_ssl_config/server.properties
 sed -i "s#PWDODAY#"$(pwd)"#g" sasl_ssl_config/server.properties
-sed -i "s#/home/cuong/Staff/github/kafka_repo/sasl/new1/kafka_2.12-2.7.0#PWDODAY#g" sasl_ssl_config/consumer_ssl.properties
+sed -i "s#/home/cuong/Staff/github/kafka_repo/sasl/new1/kafka_sasl_ssl#PWDODAY#g" sasl_ssl_config/consumer_ssl.properties
+sed -i "s#/kafka_sasl_ssl#PWDODAY#g" sasl_ssl_config/consumer_ssl.properties
 sed -i "s#PWDODAY#"$(pwd)"#g" sasl_ssl_config/consumer_ssl.properties
+sed -i "s#/home/cuong/Staff/github/kafka_repo/sasl/new1/kafka_sasl_ssl#PWDODAY#g" sasl_ssl_config/producer_ssl.properties
+sed -i "s#/kafka_sasl_ssl#PWDODAY#g" sasl_ssl_config/producer_ssl.properties
+sed -i "s#PWDODAY#"$(pwd)"#g" sasl_ssl_config/producer_ssl.properties
 echo "Start zoo"
 echo "___________"
 #source ./scripts/zoo_env
@@ -41,6 +46,8 @@ export KAFKA_OPTS="-Djava.security.auth.login.config="$(pwd)"/sasl_ssl_config/ka
 echo "KAFKA_OPTS :"$KAFKA_OPTS
 echo "KAFKA_OPTS :"$KAFKA_OPTS
 ./scripts/kafka_start.sh
+echo "Create topic!"
+./bin/kafka-topics.sh --create --bootstrap-server localhost:9094 --topic test1
 echo "Start producer"
 echo "___________"
 export KAFKA_OPTS="-Djava.security.auth.login.config="$(pwd)"/sasl_ssl_config/kafka_client_jaas.conf"
