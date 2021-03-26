@@ -6,3 +6,5 @@ sasl_ssl_config/ssl/cert-signed
 sasl_ssl_config/ssl/kafka.client.truststore.jks
 sasl_ssl_config/ssl/kafka.server.keystore.jks
 sasl_ssl_config/ssl/kafka.server.truststore.jks
+kafka_cluster/kafka_2.12-2.7.0.tgz
+kafka_cluster/sasl_ssl_config/

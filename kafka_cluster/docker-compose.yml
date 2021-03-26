@@ -1,0 +1,79 @@
+---
+version: '3'
+services:
+  kafka1:
+    image: kafka_sasl_ssl:0.1
+    container_name: kafka1
+    hostname: kafka1
+    ports:
+      - 9092:9092
+      - 9093:9093
+      - 9094:9094
+    #environment:
+      #GOPATH: /root/gocode
+      #PATH: $PATH:/root/go/bin
+    volumes: 
+      #- ./sasl_ssl_config:/kafka_sasl_ssl/sasl_ssl_config
+      - ./sasl_ssl_config/ssl:/kafka_sasl_ssl/sasl_ssl_config/ssl
+      - ./cluster_settup.sh:/cluster_settup.sh
+      - ./kafka_2.12-2.7.0.tgz:/root/kafka_2.12-2.7.0.tgz
+      #- ./samples:/kafka_sasl_ssl/samples
+      #- ./scripts:/kafka_sasl_ssl/scripts
+      #- /tmp/kafka-logs:/tmp/kafka-logs
+    entrypoint: 
+      - /bin/sh 
+      - -c 
+      - |
+        #/cluster_settup.sh
+        IS_TEST=true IS_SASL=true /cluster_settup.sh
+        #IS_SASL=true /cluster_settup.sh
+  kafka2:
+    image: kafka_sasl_ssl:0.1
+    container_name: kafka2
+    hostname: kafka2
+    #ports:
+      #- 9092:9092
+      #- 9093:9093
+      #- 9094:9094
+    #environment:
+      #GOPATH: /root/gocode
+      #PATH: $PATH:/root/go/bin
+    volumes: 
+      #- ./sasl_ssl_config:/kafka_sasl_ssl/sasl_ssl_config
+      - ./sasl_ssl_config/ssl:/kafka_sasl_ssl/sasl_ssl_config/ssl
+      - ./cluster_settup.sh:/cluster_settup.sh
+      - ./kafka_2.12-2.7.0.tgz:/root/kafka_2.12-2.7.0.tgz
+      #- ./samples:/kafka_sasl_ssl/samples
+      #- ./scripts:/kafka_sasl_ssl/scripts
+      #- /tmp/kafka-logs:/tmp/kafka-logs
+    entrypoint: 
+      - /bin/sh 
+      - -c 
+      - |
+        #/cluster_settup.sh
+        IS_SASL=true /cluster_settup.sh
+  kafka3:
+    image: kafka_sasl_ssl:0.1
+    container_name: kafka3
+    hostname: kafka3
+    #ports:
+      #- 9092:9092
+      #- 9093:9093
+      #- 9094:9094
+    #environment:
+      #GOPATH: /root/gocode
+      #PATH: $PATH:/root/go/bin
+    volumes: 
+      #- ./sasl_ssl_config:/kafka_sasl_ssl/sasl_ssl_config
+      - ./sasl_ssl_config/ssl:/kafka_sasl_ssl/sasl_ssl_config/ssl
+      - ./cluster_settup.sh:/cluster_settup.sh
+      - ./kafka_2.12-2.7.0.tgz:/root/kafka_2.12-2.7.0.tgz
+      #- ./samples:/kafka_sasl_ssl/samples
+      #- ./scripts:/kafka_sasl_ssl/scripts
+      #- /tmp/kafka-logs:/tmp/kafka-logs
+    entrypoint: 
+      - /bin/sh 
+      - -c 
+      - |
+        #/cluster_settup.sh
+        IS_SASL=true /cluster_settup.sh
